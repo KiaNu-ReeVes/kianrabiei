@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { useLanguage } from '@/context/LanguageContext'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { ExternalLink } from 'lucide-react'
 
 const projectsData = [
@@ -33,9 +34,10 @@ const projectsData = [
 
 export function ProjectsSection() {
   const { t, dir } = useLanguage()
+  const sectionRef = useScrollReveal()
 
   return (
-    <section id="projects" className="min-h-screen flex items-center py-20 bg-[#0a0a0a] relative overflow-hidden">
+    <section ref={sectionRef} id="projects" className="min-h-screen flex items-center py-20 bg-[#0a0a0a] relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[rgba(34,206,186,0.05)] via-transparent to-transparent pointer-events-none" />
       <div className="max-w-6xl mx-auto px-4 w-full relative z-10">
         <div className="space-y-16">

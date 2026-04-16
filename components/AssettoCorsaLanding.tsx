@@ -3,12 +3,14 @@
 import React from 'react'
 import { useLanguage } from '@/context/LanguageContext'
 import { useTheme } from '@/context/ThemeContext'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { useEffect } from 'react'
 import { ArrowRight } from 'lucide-react'
 
 export function AssettoCorsaLanding() {
   const { dir, t } = useLanguage()
   const { setTheme } = useTheme()
+  const sectionRef = useScrollReveal()
 
   useEffect(() => {
     setTheme('assetto')
@@ -16,6 +18,7 @@ export function AssettoCorsaLanding() {
 
   return (
     <section
+      ref={sectionRef}
       id="assetto"
       className="min-h-screen flex items-center py-20 relative overflow-hidden bg-[#0a0a0a]"
       style={{
