@@ -26,14 +26,15 @@ export function SkillsSection() {
 
           {/* Skills Grid */}
           <div className={`grid md:grid-cols-2 lg:grid-cols-4 gap-6 ${dir === 'rtl' ? 'direction-rtl' : ''}`}>
-            {Object.entries(skillsData).map((category) => (
-              <div key={category[0]} className="space-y-4 animate-fade-in-up">
+            {Object.entries(skillsData).map((category, categoryIndex) => (
+              <div key={category[0]} className="space-y-4 animate-fade-in-up" style={{ animationDelay: `${categoryIndex * 0.1}s` }}>
                 <h3 className="text-xl font-bold text-[#22ceba]">{category[0]}</h3>
                 <div className="space-y-2">
-                  {category[1].map((skill) => (
+                  {category[1].map((skill, skillIndex) => (
                     <div
                       key={skill}
-                      className="glass-card text-center hover:bg-[rgba(34,206,186,0.2)] transition-all text-[#ffffff]"
+                      className="p-3 rounded-lg border border-[rgba(34,206,186,0.2)] bg-[rgba(34,206,186,0.02)] text-center hover:bg-[rgba(34,206,186,0.12)] hover:border-[rgba(34,206,186,0.4)] transition-all text-[#ffffff] text-sm font-medium"
+                      style={{ transitionDelay: `${skillIndex * 0.05}s` }}
                     >
                       {skill}
                     </div>
@@ -44,22 +45,22 @@ export function SkillsSection() {
           </div>
 
           {/* Proficiency Bar */}
-          <div className="mt-12 space-y-6">
+          <div className="mt-12 space-y-8 animate-fade-in-up">
             <h3 className="text-2xl font-bold text-[#ffffff]">Proficiency Level</h3>
             {[
               { skill: 'Node.js / JavaScript', level: 95 },
               { skill: 'React / React Native', level: 90 },
               { skill: 'Full Stack Development', level: 92 },
               { skill: 'System Design', level: 85 },
-            ].map((item) => (
-              <div key={item.skill} className="space-y-2">
-                <div className="flex justify-between">
+            ].map((item, index) => (
+              <div key={item.skill} className="space-y-2" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="flex justify-between items-center">
                   <span className="font-medium text-[#ffffff]">{item.skill}</span>
-                  <span className="text-[#22ceba]">{item.level}%</span>
+                  <span className="text-[#22ceba] font-bold">{item.level}%</span>
                 </div>
-                <div className="glass rounded-full h-2">
+                <div className="relative h-3 rounded-full bg-[rgba(34,206,186,0.1)] border border-[rgba(34,206,186,0.2)] overflow-hidden">
                   <div
-                    className="bg-[#22ceba] h-full rounded-full transition-all"
+                    className="bg-gradient-to-r from-[#22ceba] to-[#1aa599] h-full rounded-full transition-all duration-700"
                     style={{ width: `${item.level}%` }}
                   />
                 </div>

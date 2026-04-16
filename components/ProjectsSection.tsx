@@ -50,19 +50,20 @@ export function ProjectsSection() {
             {projectsData.map((project, i) => (
               <div
                 key={i}
-                className="glass-card group hover:border-[rgba(34,206,186,0.5)] transition-all cursor-pointer text-[#ffffff]"
+                className="group p-6 rounded-xl border border-[rgba(34,206,186,0.2)] bg-[rgba(34,206,186,0.02)] hover:border-[rgba(34,206,186,0.5)] hover:bg-[rgba(34,206,186,0.08)] transition-all duration-300 cursor-pointer text-[#ffffff] animate-fade-in-up"
+                style={{ animationDelay: `${i * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-4">
-                  <span className="text-4xl">{project.icon}</span>
+                  <span className="text-5xl group-hover:scale-110 transition-transform duration-300">{project.icon}</span>
                   <ExternalLink size={20} className="text-[#22ceba] opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
 
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-[#999999] mb-4">{project.description}</p>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-[#22ceba] transition-colors">{project.title}</h3>
+                <p className="text-[#b0b0b0] mb-4 leading-relaxed text-sm">{project.description}</p>
 
                 <div className={`flex flex-wrap gap-2 ${dir === 'rtl' ? 'flex-row-reverse' : ''}`}>
                   {project.tags.map((tag) => (
-                    <span key={tag} className="glass rounded-full px-3 py-1 text-xs text-[#22ceba]">
+                    <span key={tag} className="px-3 py-1 text-xs font-medium text-[#22ceba] border border-[rgba(34,206,186,0.3)] rounded-full hover:bg-[rgba(34,206,186,0.1)] transition-all">
                       {tag}
                     </span>
                   ))}

@@ -36,16 +36,20 @@ export function AboutSection() {
           </div>
 
           {/* Stats or Visual */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 animate-fade-in-up">
             {[
               { number: '5+', label: dir === 'rtl' ? 'سال تجربه' : 'Years Experience' },
               { number: '50+', label: dir === 'rtl' ? 'پروژه' : 'Projects' },
               { number: '10+', label: dir === 'rtl' ? 'مهارت' : 'Skills' },
               { number: '100%', label: dir === 'rtl' ? 'تعهد' : 'Dedication' },
             ].map((stat, i) => (
-              <div key={i} className="glass-card text-center">
-                <div className="text-3xl font-bold text-[#22ceba] mb-2">{stat.number}</div>
-                <div className="text-sm text-[#999999]">{stat.label}</div>
+              <div 
+                key={i} 
+                className="p-4 rounded-xl border border-[rgba(34,206,186,0.2)] bg-[rgba(34,206,186,0.02)] hover:border-[rgba(34,206,186,0.4)] hover:bg-[rgba(34,206,186,0.08)] transition-all text-center group"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                <div className="text-3xl font-bold text-[#22ceba] mb-2 group-hover:scale-110 transition-transform">{stat.number}</div>
+                <div className="text-sm text-[#999999] font-medium">{stat.label}</div>
               </div>
             ))}
           </div>

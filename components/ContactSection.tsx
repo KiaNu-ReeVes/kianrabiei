@@ -33,7 +33,7 @@ export function ContactSection() {
 
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in-up">
               <div>
                 <label className="block text-sm font-medium mb-2 text-[#ffffff]">
                   {dir === 'rtl' ? 'نام' : 'Name'}
@@ -41,7 +41,7 @@ export function ContactSection() {
                 <input
                   type="text"
                   placeholder={dir === 'rtl' ? 'نام خود را وارد کنید' : 'Your name'}
-                  className="w-full glass rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#22ceba] transition-all text-[#ffffff] placeholder-[#666666]"
+                  className="w-full px-4 py-3 rounded-lg bg-[rgba(34,206,186,0.05)] border border-[rgba(34,206,186,0.2)] focus:border-[rgba(34,206,186,0.5)] focus:bg-[rgba(34,206,186,0.1)] focus:outline-none transition-all text-[#ffffff] placeholder-[#666666]"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
@@ -54,7 +54,7 @@ export function ContactSection() {
                 <input
                   type="email"
                   placeholder={dir === 'rtl' ? 'ایمیل خود را وارد کنید' : 'your@email.com'}
-                  className="w-full glass rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#22ceba] transition-all text-[#ffffff] placeholder-[#666666]"
+                  className="w-full px-4 py-3 rounded-lg bg-[rgba(34,206,186,0.05)] border border-[rgba(34,206,186,0.2)] focus:border-[rgba(34,206,186,0.5)] focus:bg-[rgba(34,206,186,0.1)] focus:outline-none transition-all text-[#ffffff] placeholder-[#666666]"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -67,7 +67,7 @@ export function ContactSection() {
                 <textarea
                   placeholder={dir === 'rtl' ? 'پیام خود را بنویسید' : 'Your message'}
                   rows={5}
-                  className="w-full glass rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#22ceba] transition-all resize-none text-[#ffffff] placeholder-[#666666]"
+                  className="w-full px-4 py-3 rounded-lg bg-[rgba(34,206,186,0.05)] border border-[rgba(34,206,186,0.2)] focus:border-[rgba(34,206,186,0.5)] focus:bg-[rgba(34,206,186,0.1)] focus:outline-none transition-all resize-none text-[#ffffff] placeholder-[#666666]"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 />
@@ -75,7 +75,7 @@ export function ContactSection() {
 
               <button
                 type="submit"
-                className="w-full glass rounded-lg px-4 py-3 font-medium hover:bg-[rgba(34,206,186,0.2)] transition-all text-[#22ceba] animate-glow"
+                className="w-full px-4 py-3 rounded-lg font-medium bg-[rgba(34,206,186,0.1)] hover:bg-[rgba(34,206,186,0.2)] border border-[rgba(34,206,186,0.3)] hover:border-[rgba(34,206,186,0.6)] transition-all text-[#22ceba] text-lg shadow-lg hover:shadow-xl"
               >
                 {dir === 'rtl' ? 'ارسال پیام' : 'Send Message'}
               </button>
@@ -95,7 +95,7 @@ export function ContactSection() {
               </div>
 
               {/* Contact Methods */}
-              <div className="space-y-4">
+              <div className="space-y-4 animate-fade-in-up">
                 {[
                   { icon: Mail, label: 'Email', value: 'info@kianrabiei.ir', href: 'mailto:info@kianrabiei.ir' },
                   { icon: Github, label: 'GitHub', value: '@kianrabiei', href: '#' },
@@ -107,12 +107,13 @@ export function ContactSection() {
                     <a
                       key={i}
                       href={contact.href}
-                      className="glass-card flex items-center gap-4 hover:border-[rgba(34,206,186,0.5)] transition-all group text-[#ffffff]"
+                      className="flex items-center gap-4 p-4 rounded-xl border border-[rgba(34,206,186,0.2)] bg-[rgba(34,206,186,0.02)] hover:border-[rgba(34,206,186,0.5)] hover:bg-[rgba(34,206,186,0.08)] transition-all group text-[#ffffff]"
+                      style={{ animationDelay: `${i * 0.1}s` }}
                     >
-                      <Icon className="text-[#22ceba] group-hover:scale-110 transition-transform" />
+                      <Icon className="text-[#22ceba] group-hover:scale-110 transition-transform flex-shrink-0" size={24} />
                       <div>
-                        <p className="font-medium">{contact.label}</p>
-                        <p className="text-sm text-[#999999]">{contact.value}</p>
+                        <p className="font-medium text-sm">{contact.label}</p>
+                        <p className="text-xs text-[#999999]">{contact.value}</p>
                       </div>
                     </a>
                   )
