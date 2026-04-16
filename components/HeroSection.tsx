@@ -23,7 +23,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="h-screen flex items-center justify-center relative overflow-hidden bg-[#0a0a0a] pt-20"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#0a0a0a]"
     >
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-[rgba(34,206,186,0.15)] via-transparent to-transparent pointer-events-none" />

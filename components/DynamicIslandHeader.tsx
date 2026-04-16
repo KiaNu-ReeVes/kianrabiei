@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect } from 'react'
 import { useLanguage } from '@/context/LanguageContext'
-import { Menu, X, Home, FileText, Zap, Mail } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 const navItems = [
-  { id: 'about', key: 'nav.about', icon: Home },
-  { id: 'projects', key: 'nav.projects', icon: FileText },
-  { id: 'skills', key: 'nav.skills', icon: Zap },
-  { id: 'contact', key: 'nav.contact', icon: Mail },
+  { id: 'about', key: 'nav.about', icon: '👤' },
+  { id: 'projects', key: 'nav.projects', icon: '💼' },
+  { id: 'skills', key: 'nav.skills', icon: '⚙️' },
+  { id: 'contact', key: 'nav.contact', icon: '📧' },
 ]
 
 export function DynamicIslandHeader() {
@@ -34,87 +34,87 @@ export function DynamicIslandHeader() {
 
   return (
     <>
-      {/* Desktop Header - Transparent background */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center pt-4">
-        <nav 
-          className={`transition-all duration-300 flex items-center gap-1 rounded-full backdrop-blur-lg ${
-            isScrolled ? 'px-3 py-2' : 'px-4 py-3'
-          }`}
-          style={{
-            background: 'rgba(34, 206, 186, 0.08)',
-            border: '1px solid rgba(34, 206, 186, 0.25)',
-            boxShadow: isScrolled ? '0 8px 32px rgba(34, 206, 186, 0.1)' : '0 4px 24px rgba(34, 206, 186, 0.08)',
-          }}
-        >
-          {/* Logo - Hidden on mobile */}
+      {/* Desktop Header */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? 'py-2 backdrop-blur-lg' : 'py-6'
+        }`}
+        style={{
+          background: isScrolled 
+            ? 'rgba(10, 10, 10, 0.8)'
+            : 'rgba(10, 10, 10, 0.4)',
+          borderBottom: isScrolled 
+            ? '1px solid rgba(34, 206, 186, 0.1)' 
+            : 'none',
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+          {/* Logo */}
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="hidden sm:flex items-center justify-center w-10 h-10 rounded-full hover:bg-[rgba(34,206,186,0.15)] transition-all text-[#22ceba] font-bold text-lg"
-            title="Home"
+            className="text-2xl font-bold neon-glow text-[#22ceba] hover:scale-110 transition-transform"
           >
             KR
           </button>
 
-          {/* Divider */}
-          <div className="hidden sm:block w-px h-6 bg-[rgba(34,206,186,0.15)]" />
-
-          {/* Navigation Items */}
-          {navItems.map((item) => {
-            const Icon = item.icon
-            return (
+          {/* Dynamic Island - Navigation */}
+          <nav 
+            className="hidden md:flex gap-1 rounded-full px-2 py-2 backdrop-blur-lg"
+            style={{
+              background: 'rgba(34, 206, 186, 0.05)',
+              border: '1px solid rgba(34, 206, 186, 0.2)',
+            }}
+          >
+            {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className="flex items-center justify-center w-10 h-10 rounded-full text-[#ffffff] hover:text-[#22ceba] hover:bg-[rgba(34,206,186,0.15)] transition-all"
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-[#ffffff] hover:text-[#22ceba] hover:bg-[rgba(34,206,186,0.1)] transition-all neon-glow-hover font-medium text-sm"
                 title={t(item.key)}
               >
-                <Icon size={isScrolled ? 18 : 20} className="transition-all" />
+                <span className="text-lg">{item.icon}</span>
+                <span className="hidden lg:inline">{t(item.key)}</span>
               </button>
-            )
-          })}
+            ))}
+          </nav>
 
-          {/* Divider */}
-          <div className="w-px h-6 bg-[rgba(34,206,186,0.15)]" />
+          {/* Right side - Language Toggle & Menu */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'fa' : 'en')}
+              className="hidden sm:flex glass rounded-full px-4 py-2 transition-all hover:bg-[rgba(34,206,186,0.15)] text-sm font-medium text-[#ffffff] border border-[rgba(34,206,186,0.2)]"
+            >
+              {language === 'en' ? 'فارسی' : 'English'}
+            </button>
 
-          {/* Language Toggle & Menu */}
-          <button
-            onClick={() => setLanguage(language === 'en' ? 'fa' : 'en')}
-            className="flex items-center justify-center w-10 h-10 rounded-full text-[#ffffff] hover:text-[#22ceba] hover:bg-[rgba(34,206,186,0.15)] transition-all text-sm font-medium"
-            title={language === 'en' ? 'فارسی' : 'English'}
-          >
-            {language === 'en' ? '🇮🇷' : '🇺🇸'}
-          </button>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-full text-[#ffffff] hover:text-[#22ceba] hover:bg-[rgba(34,206,186,0.15)] transition-all"
-          >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </nav>
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden glass rounded-full p-2 text-[#ffffff] border border-[rgba(34,206,186,0.2)]"
+            >
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div 
-            className="absolute top-full mt-3 left-4 right-4 rounded-2xl p-4 space-y-2 backdrop-blur-lg border border-[rgba(34,206,186,0.2)] md:hidden"
+            className="md:hidden mt-4 mx-4 rounded-2xl p-4 space-y-2 backdrop-blur-lg border border-[rgba(34,206,186,0.2)]"
             style={{
-              background: 'rgba(34, 206, 186, 0.08)',
+              background: 'rgba(34, 206, 186, 0.05)',
             }}
           >
-            {navItems.map((item) => {
-              const Icon = item.icon
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className="w-full text-left px-4 py-3 hover:bg-[rgba(34,206,186,0.15)] rounded-lg transition-colors flex items-center gap-3 text-[#ffffff] font-medium"
-                >
-                  <Icon size={20} />
-                  <span>{t(item.key)}</span>
-                </button>
-              )
-            })}
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                className="w-full text-left px-4 py-3 hover:bg-[rgba(34,206,186,0.15)] rounded-lg transition-colors flex items-center gap-3 text-[#ffffff] font-medium"
+              >
+                <span className="text-lg">{item.icon}</span>
+                <span>{t(item.key)}</span>
+              </button>
+            ))}
             <button
               onClick={() => {
                 setLanguage(language === 'en' ? 'fa' : 'en')
@@ -122,7 +122,7 @@ export function DynamicIslandHeader() {
               }}
               className="w-full text-left px-4 py-3 hover:bg-[rgba(34,206,186,0.15)] rounded-lg transition-colors flex items-center gap-3 text-[#ffffff] font-medium border-t border-[rgba(34,206,186,0.1)] mt-2 pt-2"
             >
-              <span className="text-lg">{language === 'en' ? '🇮🇷' : '🇺🇸'}</span>
+              <span className="text-lg">🌐</span>
               <span>{language === 'en' ? 'فارسی' : 'English'}</span>
             </button>
           </div>
@@ -130,7 +130,7 @@ export function DynamicIslandHeader() {
       </header>
 
       {/* Spacer */}
-      <div className="h-20" />
+      <div className="h-24" />
     </>
   )
 }

@@ -2,7 +2,6 @@
 
 import { LanguageProvider } from '@/context/LanguageContext'
 import { ThemeProvider } from '@/context/ThemeContext'
-import { PageTransition } from '@/components/PageTransition'
 import { DynamicIslandHeader } from '@/components/DynamicIslandHeader'
 import { HeroSection } from '@/components/HeroSection'
 import { AboutSection } from '@/components/AboutSection'
@@ -17,7 +16,6 @@ export default function Home() {
   return (
     <LanguageProvider>
       <ThemeProvider>
-        <PageTransition />
         <main className="bg-[#0a0a0a] text-[#ffffff]">
           <DynamicIslandHeader />
           <HeroSection />

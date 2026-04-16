@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { useLanguage } from '@/context/LanguageContext'
-import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 const skillsData = {
   'Backend': ['Node.js', 'Express.js', 'REST APIs', 'Database Design'],
@@ -13,10 +12,9 @@ const skillsData = {
 
 export function SkillsSection() {
   const { t, dir } = useLanguage()
-  const sectionRef = useScrollReveal()
 
   return (
-    <section ref={sectionRef} id="skills" className="min-h-screen flex items-center py-20 bg-[#0a0a0a] relative overflow-hidden">
+    <section id="skills" className="min-h-screen flex items-center py-20 bg-[#0a0a0a] relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(34,206,186,0.03)] to-transparent pointer-events-none" />
       <div className="max-w-6xl mx-auto px-4 w-full relative z-10">
         <div className="space-y-16">

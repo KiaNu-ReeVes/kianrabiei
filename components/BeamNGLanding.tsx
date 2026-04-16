@@ -3,14 +3,12 @@
 import React from 'react'
 import { useLanguage } from '@/context/LanguageContext'
 import { useTheme } from '@/context/ThemeContext'
-import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { useEffect } from 'react'
 import { ArrowRight } from 'lucide-react'
 
 export function BeamNGLanding() {
   const { dir, t } = useLanguage()
   const { setTheme } = useTheme()
-  const sectionRef = useScrollReveal()
 
   useEffect(() => {
     setTheme('beamng')
@@ -18,7 +16,6 @@ export function BeamNGLanding() {
 
   return (
     <section
-      ref={sectionRef}
       id="beamng"
       className="min-h-screen flex items-center py-20 relative overflow-hidden bg-[#0a0a0a]"
       style={{
