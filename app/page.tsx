@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <LanguageProvider>
       <ThemeProvider>
-        <main className="bg-[#000000] text-[#ffffff]">
+        <main className="bg-[#0a0a0a] text-[#ffffff]">
           <DynamicIslandHeader />
           <HeroSection />
           <AboutSection />
@@ -28,8 +28,10 @@ export default function Home() {
           <ContactSection />
 
           {/* Footer */}
-          <footer className="bg-[rgba(26,26,26,0.5)] py-8 text-center text-[#999999] border-t border-[rgba(34,206,186,0.2)]">
-            <p>© 2024 Kian Rabiei. All rights reserved.</p>
+          <footer className="bg-[rgba(10,10,10,0.8)] py-12 text-center text-[#999999] border-t border-[rgba(34,206,186,0.15)]">
+            <div className="max-w-6xl mx-auto px-4">
+              <p className="text-sm leading-relaxed">© 2024 Kian Rabiei. All rights reserved. | Full Stack Developer</p>
+            </div>
           </footer>
         </main>
       </ThemeProvider>

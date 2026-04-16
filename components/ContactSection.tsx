@@ -15,8 +15,9 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="min-h-screen flex items-center py-20 bg-[#000000]">
-      <div className="max-w-4xl mx-auto px-4 w-full">
+    <section id="contact" className="min-h-screen flex items-center py-20 bg-[#0a0a0a] relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(34,206,186,0.05)] to-transparent pointer-events-none" />
+      <div className="max-w-4xl mx-auto px-4 w-full relative z-10">
         <div className="space-y-12">
           {/* Title */}
           <div className="text-center">

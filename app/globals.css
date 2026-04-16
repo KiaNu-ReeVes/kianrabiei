@@ -2,16 +2,22 @@
 
 :root {
   /* Base Colors */
-  --background: #000000;
+  --background: #0a0a0a;
   --foreground: #ffffff;
   --primary: #22ceba;
   --secondary: #1a1a1a;
   --muted: #2a2a2a;
-  --muted-foreground: #999999;
+  --muted-foreground: #b0b0b0;
   --accent-color: #22ceba;
   --destructive: #ff3d3d;
   --border-color: rgba(34, 206, 186, 0.2);
   --radius: 0.625rem;
+  --fivem-primary: #ff9000;
+  --fivem-secondary: #ff6b00;
+  --assetto-primary: #e63946;
+  --assetto-secondary: #d62828;
+  --beamng-primary: #00d26a;
+  --beamng-secondary: #00a550;
 }
 
 * {
@@ -95,7 +101,7 @@ body {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -114,6 +120,17 @@ body {
   }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes glow {
   0%, 100% {
     box-shadow: 0 0 5px rgba(34, 206, 186, 0.5);
@@ -123,14 +140,56 @@ body {
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 .animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .animate-slide-in-right {
-  animation: slideInRight 0.6s ease-out forwards;
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
 }
 
 .animate-glow {
   animation: glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Scroll reveal animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
